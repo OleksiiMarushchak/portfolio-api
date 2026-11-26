@@ -1,0 +1,25 @@
+# fly.toml app configuration file generated for portfolio-api-f-5coa on 2026-11-26T17:30:28Z
+#
+# See https://docs.fly.io/reference/configuration for information about how to use this file.
+#
+
+app = 'portfolio-api-f-5coa'
+kill_timeout = '60s'
+primary_region = 'fra'
+
+[deploy]
+  release_command_timeout = '5m'
+  strategy = 'rolling'
+
+[http_service]
+  auto_start_machines = true
+  auto_stop_machines = 'suspend'
+  force_https = true
+  internal_port = 8080
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  cpu_kind = 'shared'
+  cpus = 1
+  memory = '1gb'
